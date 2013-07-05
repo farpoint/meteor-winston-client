@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "util": {
+      "version": "0.4.9",
+      "dependencies": {
+        "events.node": {
+          "version": "0.4.9"
+        }
+      }
+    }
+  }
+}
