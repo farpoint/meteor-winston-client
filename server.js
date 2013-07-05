@@ -1,7 +1,10 @@
 var util = Npm.require("util"),
-    lastMessage = '';
+    lastMessage = ''; // The message to return to the user
 
-// Use a custom transport to catch the parsed log
+/**
+A custom transport for winston that is used by winston-client to send log messages back to the client
+@class MeteorClient
+*/
 var MeteorClient = Winston.transports.MeteorClient = function (options) {
   this.name = 'meteorClient';
   this.level = options.level || 'silly';
@@ -9,6 +12,12 @@ var MeteorClient = Winston.transports.MeteorClient = function (options) {
 
 util.inherits(MeteorClient, Winston.Transport);
 
+/**
+Determine if a dictionary is empty
+@method isEmpty
+@param {Object} obj The object to test
+@return Boolean
+*/
 function isEmpty(obj) {
   if (Object.keys) { // EMCAScript 5 support
     return Object.keys(obj).length === 0;
@@ -27,7 +36,7 @@ MeteorClient.prototype.log = function (level, msg, meta, callback) {
   
   lastMessage = level + ': ' + msg;
   if (!isEmpty(meta) && JSON.stringify) {
-    lastMessage += '\nMetadata: ' + JSON.stringify(meta)
+    lastMessage += '\nmeta = ' + JSON.stringify(meta)
   }
   callback(null, true);
 };
@@ -35,15 +44,13 @@ MeteorClient.prototype.log = function (level, msg, meta, callback) {
 Winston.add(Winston.transports.MeteorClient, {});
  
 Meteor.methods({
+  /**
+  A rough equivalent to Winston.log() over Meteor.call.
+  Takes the same arguments
+  */
   'winston-client.log': function() {
     check(arguments, [Match.Any]);
     Winston.log.apply(null, arguments);
     return lastMessage;
-  },
-  'winston-client.setLevel': function(level) {
-    check(level, String);
-    MeteorClient.level = level;
-    
-    return "Now logging with level " + level;
   }
 });

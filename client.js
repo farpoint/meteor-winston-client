@@ -23,17 +23,7 @@ Winston = {
   data:     function() { log('data', arguments); },
   help:     function() { log('help', arguments); },
   warn:     function() { log('warn', arguments); },
-  error:    function() { log('error', arguments); },
-  
-  setLevel: function(level) {
-    Meteor.call('winston-client.setLevel', level, function(error, result) {
-      if (error) {
-        throw error;
-      } else {
-        console.log(result);
-      }
-    });
-  }
+  error:    function() { log('error', arguments); }
 };
 
 
