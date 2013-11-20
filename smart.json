@@ -3,7 +3,7 @@
   "description": "Implement a stub of winston for the client, synced back to the server",
   "homepage": "https://github.com/farpoint/meteor-winston-client",
   "author": "Farpoint <hello@farpointStation.org>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "git": "https://github.com/farpoint/meteor-winston-client.git",
   "packages": {
     "winston": ""
