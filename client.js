@@ -6,7 +6,8 @@ var log = function(level, args) {
     if (error) {
       throw error;
     } else {
-      console.log(result);
+      if (result)
+        console.log(result);
     }
   });
   Meteor.call.apply(null, args);
