@@ -1,11 +1,11 @@
 Package.describe({
   summary: 'A nifty extension to Winston that provides great logging on the client too',
-  version: "0.1.1",
+  version: "0.2.0",
   git: "https://github.com/farpoint/meteor-winston-client.git"
 });
 
 Npm.depends({
-  "util": "0.4.9"
+  "util": "0.10.3"
 })
 
 Package.on_use(function (api) {
