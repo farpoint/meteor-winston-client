@@ -14,7 +14,7 @@ var log = function(level, args) {
 }
 
 Winston = {
-  log:      function(level) { log(level, arguments)},
+  log:      function(level) { log(level, Array.prototype.slice.call(arguments, 1)); },
   silly:    function() { log('silly', arguments); },
   input:    function() { log('input', arguments); },
   verbose:  function() { log('verbose', arguments); },
