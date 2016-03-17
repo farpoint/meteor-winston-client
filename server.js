@@ -37,7 +37,7 @@ function isEmpty(obj) {
 MeteorClient.prototype.log = function (level, msg, meta, callback) {
   // @TODO: Make the log message conform better to Winston's own output
   "use strict";
-  var lastMessage = level + ': ' + msg;
+  lastMessage = level + ': ' + msg;
   if (!isEmpty(meta) && JSON.stringify) {
     lastMessage += '\nmeta = ' + JSON.stringify(meta)
   }
