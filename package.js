@@ -12,6 +12,7 @@ Package.on_use(function (api) {
   api.versionsFrom("METEOR-CORE@0.9.0-atm");
   api.use("infinitedg:winston@0.7.3", 'server');
   api.use('meteor', 'server');
+  api.use('check', 'server');
   api.add_files('client.js', 'client');
     if (api.export) {
         api.export("Winston", 'client');
